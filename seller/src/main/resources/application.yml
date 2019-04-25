@@ -1,0 +1,30 @@
+server:
+  context-path: /seller
+  port: 8083
+logging:
+  level:
+    com.googlecode.jsonrpc4j: debug
+rpc:
+  client:
+    url:  http://localhost:8081/manager/
+    basePackage: com.imooc.api
+spring:
+  cache:
+    type: hazelcast
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    packages:
+      trust-all: true
+  datasource:
+    primary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/financial_seller?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: always3you
+    backup:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/seller_backup?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: always3you
+  jpa:
+    show-sql: true
